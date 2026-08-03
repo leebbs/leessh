@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""LEESSH URL link server.
+"""GMSSH URL link server.
 
 - Dynamic multi-port 302 redirect: each link owns a port.
 - Built-in admin page on ADMIN_PORT to add/remove links.
-- Auto-generates LEESSH desktop shortcut (.gmk) icons.
+- Auto-generates GMSSH desktop shortcut (.gmk) icons.
 """
 import json
 import os
@@ -97,7 +97,7 @@ class RedirectHandler(BaseHTTPRequestHandler):
 def start_redirect(link):
     port = int(link["port"])
     handler = type("Handler", (RedirectHandler,), {"link": link})
-    srv = ThreadingHTTPServer(("127.0.0.1", port), handler)
+    srv = ThreadingHTTPServer(("0.0.0.0", port), handler)
     servers[port] = srv
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     print(f"link '{link['name']}' port {port} -> {link['url']}")
@@ -117,7 +117,7 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LEESSH 网址快捷方式管理</title>
+<title>GMSSH 网址快捷方式管理</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -151,9 +151,9 @@ PAGE = """<!DOCTYPE html>
 </head>
 <body>
 <div class="card">
-  <h1>🌐 LEESSH 网址快捷方式</h1>
-  <div class="sub">在此添加网址后，会自动在 LEESSH 桌面生成一个可点击的快捷图标。<br>
-  添加完成后，在 LEESSH 桌面刷新或重新登录即可看到新图标。</div>
+  <h1>🌐 GMSSH 网址快捷方式</h1>
+  <div class="sub">在此添加网址后，会自动在 GMSSH 桌面生成一个可点击的快捷图标。<br>
+  添加完成后，在 GMSSH 桌面刷新或重新登录即可看到新图标。</div>
 
   <form onsubmit="addLink(event)">
     <input id="name" placeholder="名称（如：我的博客）" required>
@@ -189,7 +189,7 @@ async function addLink(ev) {
   var icon = document.getElementById('icon').value.trim();
   if (!name || !url) return show('请填写名称和网址', false);
   var r = await api('/api/links/add', { name: name, url: url, icon: icon });
-  if (r.ok) { show('已创建 "' + r.title + '" 桌面图标，刷新 LEESSH 桌面即可看到', true);
+  if (r.ok) { show('已创建 "' + r.title + '" 桌面图标，刷新 GMSSH 桌面即可看到', true);
               document.getElementById('name').value='';
               document.getElementById('url').value='';
               document.getElementById('icon').value='';
@@ -304,7 +304,7 @@ def main():
     for link in state["links"]:
         start_redirect(link)
 
-    admin = ThreadingHTTPServer(("127.0.0.1", ADMIN_PORT), AdminHandler)
+    admin = ThreadingHTTPServer(("0.0.0.0", ADMIN_PORT), AdminHandler)
     print(f"admin page: http://127.0.0.1:{ADMIN_PORT}/admin")
     gen_admin_gmk()
     admin.serve_forever()
