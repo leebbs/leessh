@@ -51,14 +51,19 @@ sudo systemctl start gmssh
 ### 2. 安装网址快捷方式扩展
 
 ```bash
-# 部署扩展服务
-sudo cp extensions/gmssh-links.service /etc/systemd/system/
+# 部署扩展服务（一键脚本，推荐）
+sudo bash deploy-gmssh-links.sh
+
+# 或手动部署
 sudo mkdir -p /opt/gmssh-links
-sudo cp extensions/server.py /opt/gmssh-links/
+sudo cp extensions/server.py extensions/gmssh-link.py /opt/gmssh-links/
+sudo cp extensions/gmssh-links.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable gmssh-links
 sudo systemctl start gmssh-links
 ```
+
+> ⚠️ **远端部署必看**：如果 GMSSH 与扩展装在同一台远端服务器，`server.py` 已默认监听 `0.0.0.0`（公网可访问）。请确保服务器防火墙/安全组**放行 9089 及 9090+ 端口**，否则公网无法访问快捷方式。
 
 ## 桌面网址快捷方式
 
