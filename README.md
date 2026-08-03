@@ -46,7 +46,22 @@ sudo systemctl enable gmssh
 sudo systemctl start gmssh
 ```
 
-> **注意**：首次启动前，`.uuid.json` 会由程序自动生成。配置端口可在 `config/config.json` 的 `http_port` 修改。
+> **注意**：部署包已剔除 `.uuid.json`（设备标识，含敏感信息）。**首次启动前必须手动创建**，否则登录页会报 `read version file fail` 错误。每个服务器生成独立 uuid：
+>
+> ```bash
+> NEW_UUID=$(cat /proc/sys/kernel/random/uuid)
+> cat > /opt/gmssh/bin/.uuid.json <<EOF
+> {
+>   "arch": "$(uname -m)",
+>   "dti": 2,
+>   "uuid": "$NEW_UUID",
+>   "status": "active"
+> }
+> EOF
+> systemctl restart gmssh
+> ```
+>
+> 配置端口可在 `config/config.json` 的 `http_port` 修改。
 
 ### 2. 安装网址快捷方式扩展
 
