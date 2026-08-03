@@ -1,0 +1,90 @@
+[
+  {
+    "version": "v0.7.1",
+    "default_des": "1. \uD83D\uDCAB Server Restart Connection Fix\nResolved connection failure issues after server restart and improved interaction prompts to let you know \"if it's still alive\"\u2705.\n\n2. \uD83D\uDD27 GMSSH-Agent Auto-Start Enhancement\nImproved the auto-start prompt and interaction for GMSSH-Agent, making the experience smoother and clearer\uD83D\uDCA5.\n\n3. \uD83D\uDD28 Bug Fix: Shortcut Name Consistency in Recycle Bin\nFixed the issue where shortcut names were inconsistent after deletion and recovery from the recycle bin\u21BB\uFE0F, a must-have fix for perfectionists!\n\n4. \uD83D\uDCB2 New Feature: Right-Click Delete Support for Shortcuts\nAdded right-click delete support for shortcuts to make operations faster and more convenient\u2714\uFE0F.\n\n5. \uD83C\uDF89 Exciting Return: Application Center is Back\nThe Application Center has officially returned with this update\uD83D\uDE80! While no apps are available yet, exciting new content is on its way\u2B1C\uFE0F. Stay tuned for more surprises!",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "1. \uD83D\uDCAB 解决服务器重启后连接失败问题\n优化服务器重启后的交互提示，让你更清楚知道“它还好不好”\u2705。\n\n2. \uD83D\uDD27 GMSSH-Agent 自动启动优化\n改进了 GMSSH-Agent 的自动启动提示与交互体验，更加清晰流畅\uD83D\uDCA5。\n\n3. \uD83D\uDD28 修复回收站中快捷方式名称不一致Bug\n修复了快捷方式删除后在回收站中显示名称不一致的问题\u21BB\uFE0F，强迫症福音！\n\n4. \uD83D\uDCB2 新增功能：支持快捷方式右键删除\n新增对快捷方式右键删除的支持，操作更快捷方便\u2714\uFE0F。\n\n5. \uD83C\uDF89 应用中心重磅回归\n应用中心随本次更新正式回归啦\uD83D\uDE80！虽然目前还未上架应用，但好戏才刚刚开始，敬请期待更多惊喜\u2B1C\uFE0F！"
+      }
+    ],
+    "date": "2025-05-29"
+  },
+  {
+    "version": "v0.7.0",
+    "default_des": "1. \uD83D\uDCAB System Information Optimization\nModified server alias supports Enter key submission\u2705, improving interaction fluency\uD83D\uDCA5.\n\n2. \uD83D\uDD27 Function Fix: Recycle Bin Shortcut Recovery Logic\nFixed the issue where shortcut recovery from the recycle bin did not trigger overwrite prompt\u21BB\uFE0F. The system now correctly executes overwrite logic to ensure data consistency\uD83D\uDCBE.\n\n3. \uD83C\uDF81 New Feature Launch: User Authorization Code System\n\u2B07 Join the community to claim your exclusive activation code\uD83D\uDC8C and experience more advanced features ahead of time\u2B50!\nMore exclusive privileges will be unlocked in the future for authorized users only\uD83C\uDFC6. Secure your spot now\uD83D\uDC8E!",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "1. \uD83D\uDCAB 系统信息优化\n修改服务器别名时支持回车键提交\u2705，提升交互流畅度\uD83D\uDCA5。\n\n2. \uD83D\uDD27 功能修复：回收站恢复快捷方式逻辑完善\n修复了从回收站恢复快捷方式时未触发覆盖提示的问题\u21BB\uFE0F，现在恢复操作将正确执行覆盖逻辑，保障数据一致性\uD83D\uDCBE。\n\n3. \uD83C\uDF81 全新功能上线：用户授权码系统\n\u2B07 加入社区领取你的专属激活码\uD83D\uDC8C，抢先体验更多高级功能\u2B50！\n后续还将解锁一系列仅限授权用户使用的专属特权\uD83C\uDFC6，先人一步锁定权益\uD83D\uDC8E！"
+      }
+    ],
+    "date": "2025-05-28"
+  },
+  {
+    "version": "v0.6.0",
+    "default_des": "\n\uD83D\uDD27 Optimization of system alias settings\nThe \"Read File Failed\" error occurred when the system first modified the alias✅\nSolve the problem of slow response under high-frequency operation⚡\n\n\uD83D\uDCC2 Document management improvements\nFixed known issues in the file rename feature and improved stability and user experience\uFE0F\uD83D\uDCC1➡\uFE0F\uD83D\uDCC4\n\uD83C\uDF10 Network support enhancements (IPv6)\nGMSSH supports logging in to the other server with an ipv6 address\uD83D\uDCE1",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "\uD83D\uDD27 系统别名设置优化\n系统首次修改别名时出现的“读取文件失败”错误 ✅\n解决高频操作下响应变慢的问题 ⚡\n\n\uD83D\uDCC2 文件管理改进\n修复文件重命名功能中的已知问题，提升稳定性和用户体验 \uD83D\uDCC1➡\uFE0F\uD83D\uDCC4\n\uD83C\uDF10 网络支持增强（IPv6）\nGMSSH支持ipv6地址登录到对方服务器 \uD83D\uDCE1"
+      }
+    ],
+    "date": "2025-05-19"
+  },
+  {
+    "version": "v0.5.0",
+    "default_des": "\uD83C\uDF89 May 16 version update log| Function optimization & problem fixes come\uD83D\uDE80\nDear users and friends, it is updated again today. Let's take a look at the new changes:\uD83D\uDC47\uD83D\uDC4B\n[Function Optimization]\n\uD83E\uDDE0Fix the BUG that occurs when AI sends commands to make AI commands more accurate and obedient\uD83E\uDD16\nThe key login prompt is optimized, the guidance is clearer, so that you will no longer get lost丨\n\uD83D\uDCC8Task manager adds automatic switching function (b/kB/MB) to make data display more intuitive\uD83D\uDCCA\nExtend the Toast prompt display time when large files are opened, so important content will no longer flash by\n\uD83D\uDCBEAdd a confirmation prompt when saving files exceeding 1MB to avoid erroneous operations and carefully protect every piece of your data\uD83D\uDCC2\nˇFixed the problem of dead yum writing in ZIP scripts. It can run smoothly even in an external network environment. Stability UP\uD83C\uDD99\n[Interactive Enhancement]\n\uD83D\uDDA5\uFE0FAdd upload support to the desktop right-click menu, making the operation faster and uploading in one step\uD83D\uDCE4\nThe terminal type pop-up window does not automatically close when an error is reported, making it convenient to view error messages and make debugging easier\uD83D\uDEE0\uFE0F\n\uD83E\uDDEFRoot group users can automatically exit after performing compression/decompression operations, improving system response efficiency and releasing resources more intelligently\uD83D\uDDD1\uFE0F\nThank you to every user for their support and feedback 丨ˇ ˇ\nWe will continue to polish product details and strive to bring you a more efficient, stable and considerate experience.\nIf you encounter any questions, please feel free to contact us\uD83D\uDCAC ",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "\uD83C\uDF89 5月16日版本更新日志 | 功能优化 & 问题修复来袭 \uD83D\uDE80\n\n亲爱的用户朋友们\uD83D\uDC4B，今天又又又更新了，一起来看看有哪些新变化吧\uD83D\uDC47：\n\n\uD83D\uDD27 【功能优化】\n\uD83E\uDDE0 修复AI发送命令时出现的BUG，让AI指令更准确、更听话\uD83E\uDD16\n\uD83D\uDD10 密钥登录提示语优化，引导更清晰，让你不再迷路\uD83D\uDE09\n\uD83D\uDCC8 任务管理器新增上传/下载速度单位自动切换功能（b/kB/MB），数据展示更直观\uD83D\uDCCA\n\uD83D\uDCC4 延长大文件打开时的Toast提示展示时间，重要内容不再一闪而过\uD83D\uDC40\n\uD83D\uDCBE 文件超过1MB保存时新增确认提示，避免误操作，贴心守护你的每一份数据\uD83D\uDCC2\n\uD83D\uDEE0\uFE0F 修复ZIP脚本中yum写死的问题，无外网环境下也能顺利运行，稳定性UP\uD83C\uDD99\n\uD83D\uDCC1 【交互增强】\n8. \uD83D\uDDA5\uFE0F 桌面右键菜单新增上传支持，操作更快捷，上传一步到位\uD83D\uDCE4\n9. \uD83D\uDCAC 终端类型弹窗在报错时不自动关闭，方便查看错误信息，调试更轻松\uD83D\uDEE0\uFE0F\n10. \uD83E\uDDEF root组用户进行压缩/解压操作后可自动退出，提升系统响应效率，释放资源更智能\uD83D\uDDD1\uFE0F\n\n感谢每一位用户的支持与反馈❤\uFE0F\n我们会持续打磨产品细节，努力为你带来更高效、稳定、贴心的使用体验\uD83C\uDF1F\n如遇任何问题，欢迎随时联系我们\uD83D\uDCAC"
+      }
+    ],
+    "date": "2025-05-16"
+  },
+  {
+    "version": "v0.4.0",
+    "default_des": "feat: \n1. Added support for certificate method login certificate with password;\nfix:\n1. Adjust the first 1M content to read from large files to the last 1M content;\n2. Increase in international information on inaccessible addresses;\n3. Fixed the problem that remotely downloaded files will not automatically follow the jump address; ",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "feat: \n1. 增加支持证书方式登录证书有密码的情况；\n\nfix:\n1. 调整大文件读取最前面1M内容为最后1M内容；\n2. 地址不可达国际化信息增加；\n3. 修复远程下载文件不会自动跟随跳转地址的问题；"
+      }
+    ],
+    "date": "2025-05-15"
+  },
+  {
+    "version": "v0.3.0",
+    "default_des": "feat: \n1. Support scenarios for sudo user password verification under certificate login;\nfix:\n1. Fixed the problem that the terminal will be disconnected when running in the background;\n2. Fixed the problem that incorrect server time would cause the token to expire and become invalid;\nperf:\n1. Optimize initialization speed;\n2. Optimize Delete key operation;\n3. Optimize overall access speed; ",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "feat: \n1. 支持证书登录情况下 sudo 用户密码校验的场景；\n\nfix:\n1. 修复终端后台运行会断开连接的问题；\n2. 修复服务器时间不对会导致token过期失效的问题；\n\nperf:\n1. 优化初始化速度；\n2. 优化 Delete 删除键操作;\n3. 优化整体访问速度； \n"
+      }
+    ],
+    "date": "2025-05-14"
+  },
+  {
+    "version": "v0.2.0",
+    "default_des": "feat:\n1. Add the function of supporting commonly used commands on the terminal;\n2. Supports automatic reconnection when the terminal is disconnected and re-focused;\n3. Increase server resource usage display;\n4. Add task manager applications;\n5. Increase online customer service to make it convenient to contact customer service at any time;\n6. Compatible with arm architecture chips;\nchange:\n1. Adjustment directory does not perform size calculation by default (too much content under the folder will cause the interface speed to be slow);\n2. File manager right click on the mouse to point to the name and not point to the name for different logical adjustments;\nperf:\n1. Optimize the size of front-end resources;",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "feat:\n1. 增加支持终端联想常用命令功能;\n2. 支持终端在断开连接后重新聚焦时自动重连;\n3. 增加服务器资源占用显示;\n4. 增加任务管理器应用;\n5. 增加在线客服，方便随时联系客服;\n6. 兼容 arm 架构芯片;\n\nchange:\n1. 调整目录默认不做大小计算(文件夹下内容多会导致接口速度慢);\n2. 文件管理器右键在鼠标指向名称和不指向名称的不同逻辑调整;\n\nperf:\n1. 优化前端资源大小；\n"
+      }
+    ],
+    "date": "2025-04-28"
+  },
+  {
+    "version": "v0.1.0",
+    "default_des": "1、Update some problems\n2、Fix what function\n3、Add what function\n",
+    "des": [
+      {
+        "lang": "zh-CN",
+        "des": "1、更新了一些小的问题\n2、修复了什么功能\n3、添加了什么功能\n"
+      }
+    ],
+    "date": "2025-04-27"
+  }
+]

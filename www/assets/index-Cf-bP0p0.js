@@ -1,0 +1,1 @@
+import{j as e}from"./index-CUb5a2Hh.js";function t(){return{startSessionApi:s=>e.post("/api/home_ai/start_session",s,{baseURL:"https://api.gmssh.com/",headers:{CID:s.cid,VID:2}}),getSessionChatApi:s=>e.get(`/api/home_ai/messages?chat_id=${s.chat_id}`,{baseURL:"https://api.gmssh.com/",headers:{CID:s.cid,"AI-TOKEN":s.token,VID:2}})}}export{t as u};

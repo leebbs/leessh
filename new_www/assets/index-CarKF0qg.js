@@ -1,0 +1,1 @@
+import{u as o}from"./useApp-CuizeKlu.js";import{d as a,M as t,N as r,aa as s,Q as p}from"./vue-oEp0dm3D.js";const d=a({__name:"index",setup(c){const{currentApp:e}=o(),n=e.value.initData?.render;return(m,i)=>(t(),r(s(p(n))))}});export{d as default};

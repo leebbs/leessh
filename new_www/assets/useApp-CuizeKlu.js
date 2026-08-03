@@ -1,0 +1,1 @@
+import{a as n,r as t}from"./vue-oEp0dm3D.js";function u(){const o=n("windowHeight",t(null)),p=n("windowWidth",t(null)),i=n("appIndex",t(null)),e=n("windowId",t(null)),r=n("appContainer",t(null)),d=n("currentApp",t(null));return{windowHeight:o,windowWidth:p,appIndex:i,windowId:e,appContainer:r,currentApp:d}}export{u};

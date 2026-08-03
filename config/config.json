@@ -1,0 +1,54 @@
+{
+  "log_level": "debug",
+  "http_port": "8091",
+  "cleaner_interval": "5m",
+  "cleaner_timeout": "30m",
+  "authCode": "",
+  "credential": {
+    "storage_type": "encrypt",
+    "position": "credential.json"
+  },
+  "web_access_control": {
+    "allowed_directories": [
+      "/web/appcenter/",
+      "/web/app_ext/"
+    ]
+  },
+  "logger": {
+    "path": "../gs_logs",
+    "file": "gs-{Y-m-d}.log",
+    "level": "debug",
+    "stdout": false,
+    "StStatus": 0,
+    "rotateBackupLimit": 7,
+    "writerColorEnable": true,
+    "RotateBackupCompress": 9,
+    "rotateExpire": "1d",
+    "Flag": 44
+  },
+  "mfa": {
+    "mfaDir": "/app/config/mfa",
+    "oldMfaFile": "mfa.json"
+  },
+  "login_log": {
+    "enabled": false,
+    "log_path": "./login_logs",
+    "log_file": "login-{Y-m-d}.log",
+    "max_size_mb": 100,
+    "max_age_days": 30,
+    "max_backups": 10,
+    "compress": true
+  },
+  "ip_whitelist": {
+    "enabled": false,
+    "allowed_ips": []
+  },
+  "displayCornerInfo": true,
+  "term_log": {
+    "enabled": false,
+    "log_path": "./term_logs",
+    "max_retention_days": 30,
+    "auto_cleanup": true
+  },
+  "versionType": "2"
+}

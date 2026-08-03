@@ -1,0 +1,1 @@
+import{u as o}from"./useApp-BsHPuiK1.js";import{d as t,M as a,N as r,a9 as s,Q as p}from"./vue-Mu_AdkHf.js";const d=t({__name:"index",setup(c){const{currentApp:e}=o(),n=e.value.initData?.render;return(m,i)=>(a(),r(s(p(n))))}});export{d as default};

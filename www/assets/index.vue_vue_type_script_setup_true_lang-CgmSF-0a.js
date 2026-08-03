@@ -1,0 +1,1 @@
+import{d as t,r as a,f as r,M as s,N as n,m as p,T as l,a2 as u}from"./vue-Mu_AdkHf.js";const m=t({__name:"index",props:{app:{}},setup(d){const e=a(!1);return r(()=>{e.value=!0}),(o,c)=>e.value?(s(),n(l,{key:0,to:`#teleport-${o.app?.fileId}`},[p(o.$slots,"default")],8,["to"])):u("",!0)}});export{m as _};

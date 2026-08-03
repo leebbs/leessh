@@ -1,0 +1,14 @@
+[Unit]
+Description=GMSSH - AI Ops Terminal Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/gmssh
+ExecStart=/opt/gmssh/bin/gs_main http -c /opt/gmssh/config/config.json
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

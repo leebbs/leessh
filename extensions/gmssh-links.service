@@ -1,0 +1,12 @@
+[Unit]
+Description=GMSSH URL link server
+After=network.target gmssh.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/gmssh-links/server.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,90 @@
+{
+    "test":{
+        "version":"1.0.0",
+        "common":{
+            "startup":"/.__gmssh"
+        },
+        "server":{
+            "mode":"test",
+            "name":"LEESSH",
+            "debug":true,
+            "port":"",
+            "jrpc":true,
+            "socks5":true,
+            "prof":false
+        },
+        "startup":["cache","data","desktop","logs","plugin","script","tmp"],
+        "stream":{
+            "heartbeat": 1000
+        },
+        "jsonrpc":{
+            "sockets":"/.__gmssh/tmp/rpc.sock"
+        },
+        "sysconf":{
+            "datadir":"/.__gmssh/tmp/sysconf.json"
+        },
+        "logger":{
+            "path": "/.__gmssh/logs/",
+            "file": "{Y-m-d}.log",
+            "level": "error",
+            "stdout": false,
+            "StStatus": 0,
+            "rotateBackupLimit": 7,
+            "writerColorEnable": true,
+            "RotateBackupCompress": 9,
+            "rotateExpire": "1d",
+            "Flag": 44
+        },
+        "gmsshpath": {
+            "data":"/.__gmssh/data",
+            "desktop": "/.__gmssh/desktop",
+            "plugin": "/.__gmssh/plugin",
+            "tmp": "/.__gmssh/tmp",
+            "Recycle_bin": "/.__gmssh/.Recycle_bin"
+        }
+    },
+    "prod":{
+        "version":"1.0.0",
+        "common":{
+            "startup":"/.__gmssh"
+        },
+        "server":{
+            "mode":"release",
+            "name":"LEESSH",
+            "debug":false,
+            "port":"",
+            "jrpc":true,
+            "socks5":true,
+            "prof":false
+        },
+        "startup":["cache","data","desktop","logs","plugin","script","tmp"],
+        "stream":{
+            "heartbeat": 30
+        },
+        "jsonrpc":{
+            "sockets":"/.__gmssh/tmp/rpc.sock"
+        },
+        "sysconf":{
+            "datadir":"/.__gmssh/tmp/sysconf.json"
+        },
+        "logger":{
+            "path": "/.__gmssh/logs/",
+            "file": "{Y-m-d}.log",
+            "level": "error",
+            "stdout": false,
+            "StStatus": 0,
+            "rotateBackupLimit": 7,
+            "writerColorEnable": true,
+            "RotateBackupCompress": 9,
+            "rotateExpire": "1d",
+            "Flag": 44
+        },
+        "gmsshpath": {
+            "data":"/.__gmssh/data",
+            "desktop": "/.__gmssh/desktop",
+            "plugin": "/.__gmssh/plugin",
+            "tmp": "/.__gmssh/tmp",
+            "Recycle_bin": "/.__gmssh/.Recycle_bin"
+        }
+    }
+}
