@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>内置浏览器</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #1e1e2e; font-family: -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .toolbar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 10px; background: #181825; border-bottom: 1px solid #313244;
+  }
+  .toolbar button {
+    background: #313244; color: #cdd6f4; border: none; cursor: pointer;
+    border-radius: 6px; padding: 6px 12px; font-size: 13px; flex-shrink: 0;
+  }
+  .toolbar button:hover { background: #45475a; }
+  .toolbar button:disabled { opacity: .4; cursor: default; }
+  #urlbar {
+    flex: 1; background: #11111b; color: #cdd6f4; border: 1px solid #45475a;
+    border-radius: 6px; padding: 6px 10px; font-size: 13px; outline: none;
+  }
+  #urlbar:focus { border-color: #89b4fa; }
+  #frameWrap { position: absolute; top: 41px; left: 0; right: 0; bottom: 0; }
+  #frame { width: 100%; height: 100%; border: none; background: #fff; }
+  #status { color: #a6adc8; font-size: 12px; padding: 2px 10px; }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <button id="back">← 后退</button>
+    <button id="fwd">→ 前进</button>
+    <button id="reload">↻ 刷新</button>
+    <input id="urlbar" placeholder="输入网址，如 https://github.com">
+    <button id="go">前往</button>
+    <button id="newtab" title="新窗口打开">⧉ 外部打开</button>
+  </div>
+  <div id="frameWrap">
+    <iframe id="frame"></iframe>
+  </div>
+  <div id="status"></div>
+<script>
+(function(){
+  var frame = document.getElementById('frame');
+  var urlbar = document.getElementById('urlbar');
+  var back = document.getElementById('back');
+  var fwd = document.getElementById('fwd');
+  var status = document.getElementById('status');
+  var go = document.getElementById('go');
+  var newtab = document.getElementById('newtab');
+
+  var target = '';
+  var params = new URLSearchParams(window.location.search);
+  target = params.get('url') || '';
+
+  function normalize(u) {
+    u = (u || '').trim();
+    if (!u) return '';
+    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    return u;
+  }
+
+  // 如果指向本地重定向端口，先查询真实目标 URL
+  function resolveTarget(u) {
+    u = normalize(u);
+    try {
+      var uo = new URL(u);
+      var isLocalPort = (uo.hostname === 'localhost' || uo.hostname === '127.0.0.1');
+      if (isLocalPort) {
+        status.textContent = '解析目标地址...';
+        return fetch(uo.origin + '/status', { cache: 'no-store' })
+          .then(function(r){ return r.json(); })
+          .then(function(d){ return d.target || u; })
+          .catch(function(){ return u; });
+      }
+    } catch(e) {}
+    return Promise.resolve(u);
+  }
+
+  function load(u) {
+    u = normalize(u);
+    if (!u) return;
+    resolveTarget(u).then(function(real){
+      target = real;
+      frame.src = real;
+      urlbar.value = real;
+      status.textContent = '加载中: ' + real;
+      try { history.replaceState(null, '', '?url=' + encodeURIComponent(real)); } catch(e){}
+    });
+  }
+
+  go.onclick = function(){ load(urlbar.value); };
+  urlbar.addEventListener('keydown', function(e){ if (e.key === 'Enter') load(urlbar.value); });
+  back.onclick = function(){ try{ frame.contentWindow.history.back(); }catch(e){} };
+  fwd.onclick = function(){ try{ frame.contentWindow.history.forward(); }catch(e){} };
+  reload.onclick = function(){ if (target) { frame.src = target; status.textContent = '加载中: ' + target; } };
+  newtab.onclick = function(){ if (target) window.open(target, '_blank'); };
+
+  var blockedHosts = {};
+  var loadingTimer = null;
+
+  function showBlocked(u) {
+    // 显示拒绝提示页
+    var doc = frame.contentDocument || frame.contentWindow.document;
+    doc.open();
+    doc.write('<!DOCTYPE html><html><head><meta charset="utf-8"><style>'
+      + 'body{font-family:-apple-system,"PingFang SC",sans-serif;background:#1e1e2e;color:#cdd6f4;'
+      + 'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px;}'
+      + 'h2{color:#f38ba8;}p{color:#a6adc8;max-width:480px;line-height:1.7;}'
+      + 'button{background:#89b4fa;color:#11111b;border:none;border-radius:8px;padding:10px 24px;font-size:14px;cursor:pointer;margin-top:10px;}'
+      + 'button:hover{background:#74c7ec;}</style></head><body>'
+      + '<h2>此网站禁止内嵌显示</h2>'
+      + '<p>该网站设置了 <b>X-Frame-Options</b> 安全策略，拒绝在浏览器窗口内显示。'
+      + '这是网站自身的限制，任何内嵌浏览器都无法绕过。</p>'
+      + '<p style="word-break:break-all;color:#89dceb;">' + u + '</p>'
+      + '<button onclick="parent.document.getElementById(\'__openExt\').click()">在新窗口打开</button>'
+      + '</body></html>');
+    doc.close();
+    status.textContent = '该网站禁止内嵌: ' + u;
+  }
+
+  frame.onload = function(){
+    clearTimeout(loadingTimer);
+    try {
+      var href = frame.contentWindow.location.href;
+      // 检查是否被拒绝（about:blank 或同源错误）
+      if (href && href !== 'about:blank') {
+        status.textContent = '完成: ' + href;
+      } else {
+        showBlocked(target);
+      }
+    } catch(e) {
+      // 跨域无法读取，且可能是被拒绝的页
+      var host = target ? target.replace(/^https?:\/\//,'').split('/')[0] : '';
+      if (blockedHosts[host]) { showBlocked(target); }
+      else { status.textContent = '完成: ' + target; }
+    }
+  };
+  frame.onerror = function(){ showBlocked(target); };
+
+  if (target) load(target);
+  else { urlbar.focus(); status.textContent = '请输入网址'; }
+})();
+</script>
+</body>
+</html>
